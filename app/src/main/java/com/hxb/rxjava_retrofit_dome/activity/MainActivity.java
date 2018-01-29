@@ -52,10 +52,22 @@ public class MainActivity extends BaseActivity {
         Map<String, String> map = new HashMap<>();
         map.put("start", "0");
         map.put("count", "10");
+// TODO: 2018/1/29 Post
+//        addDisposable(new HttpMethods()
+//                .createService(ApiService.class)
+//                .getTopMoviePost(map)
+//                .compose(new DefaultTransformer<HttpResult<Subject>>())
+//                .subscribeWith(new ApiSubscriber<HttpResult<Subject>>(this) {
+//                    @Override
+//                    public void onNext(HttpResult<Subject> entity) {
+//                        resultTV.setText(entity.getSubjects().toString());
+//                    }
+//                }));
 
+// TODO: 2018/1/29 Get
         addDisposable(new HttpMethods()
                 .createService(ApiService.class)
-                .getTopMovie(map)
+                .getTopMovieGet("v2/movie/top250?",map)
                 .compose(new DefaultTransformer<HttpResult<Subject>>())
                 .subscribeWith(new ApiSubscriber<HttpResult<Subject>>(this) {
                     @Override
